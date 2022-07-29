@@ -52,6 +52,8 @@
     "standard-version": "^9.3.2"
   },
   "dependencies": {
+    "config": "^3.3.7",
+    "dotenv": "^16.0.1",
     "winston": "^3.7.2",
     "winston-daily-rotate-file": "^4.6.1",
     "xlsx": "^0.18.5"

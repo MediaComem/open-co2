@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import XLSDataReader from "./modules/XLSDataReader.js";
 import DataParser from "./modules/DataParser.js";
 import FileExporter from "./modules/FileExporter.js";
@@ -16,7 +18,17 @@ const xlsDataReader = new XLSDataReader(inputFile);
 const categoriesConfig = {
   fileName: "data/output/categories.js",
   varName: "categoriesData",
-  sheets: ["Electricity", "Heat", "Transports", "IT", "Appliances", "Furnitures", "Packaging", "Accomodation", "Food"]
+  sheets: [
+    "Electricity",
+    "Heat",
+    "Transports",
+    "IT",
+    "Appliances",
+    "Furnitures",
+    "Packaging",
+    "Accomodation",
+    "Food"
+  ]
 };
 
 /**

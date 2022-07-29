@@ -13,15 +13,20 @@ export function findObjectsFromIds(arrayOfIds, arrayToFilter) {
   return objects;
 }
 
-export function formatString(string) {
-  if (string && (typeof string === "string" || string instanceof String)) {
-    return string
-      .normalize("NFD") // Normalization form canonical decomposition
-      .replace(/[\u0300-\u036f]/g, "") // Remove accents
-      .replace(/,/g, "") // Remove comma
-      .replace(/ /g, "_") // Replace spaces with underscore
-      .toLowerCase(); // Convert to lowercase
-  } else return "";
+export function formatString(input) {
+  // If not a string
+  if (!(input && (typeof input === "string" || input instanceof String)))
+    throw new Error(
+      "formatString() must receive a string as an input parameter"
+    );
+
+  return input
+    .normalize("NFD") // Normalization form canonical decomposition
+    .replace(/[^a-zA-Z0-9 ]/g, "") // Remove special characters, keep letters and numbers
+    .replace(/[\u0300-\u036f]/g, "") // Remove accents
+    .replace(/,/g, "") // Remove comma
+    .replace(/ /g, "_") // Replace spaces with underscore
+    .toLowerCase(); // Convert to lowercase
 }
 
 export function isArrayEmpty(array) {

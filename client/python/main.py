@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 An example to get all the Open CO2 categories
 Using requests module

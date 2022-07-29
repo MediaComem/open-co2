@@ -1,0 +1,15 @@
+{
+  "log": {
+    "level": "info",
+    "dir": "logs/"
+  },
+  "server": {
+    "port": 4000,
+    "graphqlEndpoint": "/graphql",
+    "restBase": "/rest",
+    "restDepth": 1,
+    "mongoUri": "mongodb://database:27017/open-co2",
+    "apolloIntrospection": true,
+    "apolloPlayground": true
+  }
+}

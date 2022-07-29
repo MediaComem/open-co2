@@ -14,13 +14,11 @@ services:
       dockerfile: Dockerfile
     image: open-co2-server
     container_name: server
-    restart: on-failure
+    restart: always
     volumes:
       - open-co2-seeder-data:/usr/src/app/data/
     ports:
-      - "4000:4000"
-    links:
-      - database
+      - 4000:4000
     networks:
       - open-co2
   # ========================================================
@@ -30,10 +28,9 @@ services:
     image: mongo:5.0
     container_name: database
     restart: always
-    ports:
-      - 27017:27017
-    expose:
-      - 27017
+    # Expose on host for test purpose only (e.g. Access with MongoDB Compass…)
+    # ports:
+    #   - 27017:27017
     volumes:
       - mongodb:/data/db # $HOME/mongo:/data/db
       - mongodb-config:/data/configdb
@@ -45,7 +42,7 @@ services:
     networks:
       - open-co2
     # healthcheck:
-    #   test: 'echo ''db.runCommand("ping").ok'''
+    #   test: 'echo ''database.runCommand("ping").ok'''
     #   interval: 5s
     #   timeout: 5s
     #   retries: 3
@@ -59,9 +56,8 @@ services:
     environment:
       - HOST=http://localhost:4000/graphql
       - TITLE="Open CO2 Playground"
-      - PORT=6600
     ports:
-      - "4200:6600"
+      - 4200:8080
     depends_on:
       - server
 

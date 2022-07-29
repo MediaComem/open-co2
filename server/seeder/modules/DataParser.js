@@ -94,7 +94,6 @@ class DataParser {
    */
   unitTest(method) {
     if (process.env.NODE_ENV !== "test") {
-      console.log(process.env.NODE_ENV);
       throw "unitTest can only be used in test mode";
     }
     switch (method) {
